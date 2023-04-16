@@ -19,7 +19,7 @@ import (
 	extensioncurrency "github.com/ProtoconNet/mitum-currency-extension/v2/currency"
 	"github.com/ProtoconNet/mitum-currency/v2/currency"
 	bsonenc "github.com/ProtoconNet/mitum-currency/v2/digest/util/bson"
-	"github.com/ProtoconNet/mitum-nft/nft/collection"
+	timestampservice "github.com/ProtoconNet/mitum-timestamp/timestamp/service"
 	"github.com/ProtoconNet/mitum2/base"
 	"github.com/ProtoconNet/mitum2/isaac"
 	isaacblock "github.com/ProtoconNet/mitum2/isaac/block"
@@ -170,13 +170,8 @@ func POperationProcessorsMap(ctx context.Context) (context.Context, error) {
 	opr.SetProcessor(currency.SuffrageInflationHint, extensioncurrency.NewSuffrageInflationProcessor(params.Threshold()))
 	opr.SetProcessor(extensioncurrency.CreateContractAccountsHint, extensioncurrency.NewCreateContractAccountsProcessor())
 	opr.SetProcessor(extensioncurrency.WithdrawsHint, extensioncurrency.NewWithdrawsProcessor())
-	opr.SetProcessor(collection.CollectionRegisterHint, collection.NewCollectionRegisterProcessor())
-	opr.SetProcessor(collection.CollectionPolicyUpdaterHint, collection.NewCollectionPolicyUpdaterProcessor())
-	opr.SetProcessor(collection.MintHint, collection.NewMintProcessor())
-	opr.SetProcessor(collection.NFTTransferHint, collection.NewNFTTransferProcessor())
-	opr.SetProcessor(collection.DelegateHint, collection.NewDelegateProcessor())
-	opr.SetProcessor(collection.ApproveHint, collection.NewApproveProcessor())
-	opr.SetProcessor(collection.NFTSignHint, collection.NewNFTSignProcessor())
+	opr.SetProcessor(timestampservice.ServiceRegisterHint, timestampservice.NewServiceRegisterProcessor())
+	opr.SetProcessor(timestampservice.AppendHint, timestampservice.NewAppendProcessor(db.LastBlockMap))
 
 	_ = set.Add(currency.CreateAccountsHint, func(height base.Height) (base.OperationProcessor, error) {
 		return opr.New(
@@ -242,69 +237,6 @@ func POperationProcessorsMap(ctx context.Context) (context.Context, error) {
 	})
 
 	_ = set.Add(extensioncurrency.WithdrawsHint, func(height base.Height) (base.OperationProcessor, error) {
-		return opr.New(
-			height,
-			db.State,
-			nil,
-			nil,
-		)
-	})
-
-	_ = set.Add(collection.CollectionRegisterHint, func(height base.Height) (base.OperationProcessor, error) {
-		return opr.New(
-			height,
-			db.State,
-			nil,
-			nil,
-		)
-	})
-
-	_ = set.Add(collection.CollectionPolicyUpdaterHint, func(height base.Height) (base.OperationProcessor, error) {
-		return opr.New(
-			height,
-			db.State,
-			nil,
-			nil,
-		)
-	})
-
-	_ = set.Add(collection.MintHint, func(height base.Height) (base.OperationProcessor, error) {
-		return opr.New(
-			height,
-			db.State,
-			nil,
-			nil,
-		)
-	})
-
-	_ = set.Add(collection.NFTTransferHint, func(height base.Height) (base.OperationProcessor, error) {
-		return opr.New(
-			height,
-			db.State,
-			nil,
-			nil,
-		)
-	})
-
-	_ = set.Add(collection.DelegateHint, func(height base.Height) (base.OperationProcessor, error) {
-		return opr.New(
-			height,
-			db.State,
-			nil,
-			nil,
-		)
-	})
-
-	_ = set.Add(collection.ApproveHint, func(height base.Height) (base.OperationProcessor, error) {
-		return opr.New(
-			height,
-			db.State,
-			nil,
-			nil,
-		)
-	})
-
-	_ = set.Add(collection.NFTSignHint, func(height base.Height) (base.OperationProcessor, error) {
 		return opr.New(
 			height,
 			db.State,

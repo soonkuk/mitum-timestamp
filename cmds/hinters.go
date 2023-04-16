@@ -4,8 +4,6 @@ import (
 	extensioncurrency "github.com/ProtoconNet/mitum-currency-extension/v2/currency"
 	isaacoperation "github.com/ProtoconNet/mitum-currency-extension/v2/isaac"
 	"github.com/ProtoconNet/mitum-currency/v2/currency"
-	"github.com/ProtoconNet/mitum-nft/nft"
-	"github.com/ProtoconNet/mitum-nft/nft/collection"
 	"github.com/ProtoconNet/mitum2/launch"
 	"github.com/ProtoconNet/mitum2/util/encoder"
 	"github.com/pkg/errors"
@@ -59,34 +57,6 @@ var hinters = []encoder.DecodeDetail{
 	{Hint: isaacoperation.SuffrageDisjoinHint, Instance: isaacoperation.SuffrageDisjoin{}},
 	{Hint: isaacoperation.FixedSuffrageCandidateLimiterRuleHint, Instance: isaacoperation.FixedSuffrageCandidateLimiterRule{}},
 	{Hint: isaacoperation.MajoritySuffrageCandidateLimiterRuleHint, Instance: isaacoperation.MajoritySuffrageCandidateLimiterRule{}},
-	{Hint: nft.SignerHint, Instance: nft.Signer{}},
-	{Hint: nft.SignersHint, Instance: nft.Signers{}},
-	{Hint: nft.NFTIDHint, Instance: nft.NFTID{}},
-	{Hint: nft.NFTHint, Instance: nft.NFT{}},
-	{Hint: nft.DesignHint, Instance: nft.Design{}},
-	{Hint: collection.CollectionLastNFTIndexStateValueHint, Instance: collection.CollectionLastNFTIndexStateValue{}},
-	{Hint: collection.NFTStateValueHint, Instance: collection.NFTStateValue{}},
-	{Hint: collection.NFTBoxStateValueHint, Instance: collection.NFTBoxStateValue{}},
-	{Hint: collection.NFTBoxHint, Instance: collection.NFTBox{}},
-	{Hint: collection.AgentBoxStateValueHint, Instance: collection.AgentBoxStateValue{}},
-	{Hint: collection.AgentBoxHint, Instance: collection.AgentBox{}},
-	{Hint: collection.CollectionPolicyHint, Instance: collection.CollectionPolicy{}},
-	{Hint: collection.CollectionDesignHint, Instance: collection.CollectionDesign{}},
-	{Hint: collection.CollectionDesignStateValueHint, Instance: collection.CollectionDesignStateValue{}},
-	{Hint: collection.CollectionRegisterFormHint, Instance: collection.CollectionRegisterForm{}},
-	{Hint: collection.CollectionRegisterHint, Instance: collection.CollectionRegister{}},
-	{Hint: collection.CollectionPolicyUpdaterHint, Instance: collection.CollectionPolicyUpdater{}},
-	{Hint: collection.MintFormHint, Instance: collection.MintForm{}},
-	{Hint: collection.MintItemHint, Instance: collection.MintItem{}},
-	{Hint: collection.MintHint, Instance: collection.Mint{}},
-	{Hint: collection.NFTTransferItemHint, Instance: collection.NFTTransferItem{}},
-	{Hint: collection.NFTTransferHint, Instance: collection.NFTTransfer{}},
-	{Hint: collection.DelegateItemHint, Instance: collection.DelegateItem{}},
-	{Hint: collection.DelegateHint, Instance: collection.Delegate{}},
-	{Hint: collection.ApproveItemHint, Instance: collection.ApproveItem{}},
-	{Hint: collection.ApproveHint, Instance: collection.Approve{}},
-	{Hint: collection.NFTSignItemHint, Instance: collection.NFTSignItem{}},
-	{Hint: collection.NFTSignHint, Instance: collection.NFTSign{}},
 }
 
 var supportedProposalOperationFactHinters = []encoder.DecodeDetail{
@@ -104,13 +74,6 @@ var supportedProposalOperationFactHinters = []encoder.DecodeDetail{
 	{Hint: currency.SuffrageInflationFactHint, Instance: currency.SuffrageInflationFact{}},
 	{Hint: extensioncurrency.CreateContractAccountsFactHint, Instance: extensioncurrency.CreateContractAccountsFact{}},
 	{Hint: extensioncurrency.WithdrawsFactHint, Instance: extensioncurrency.WithdrawsFact{}},
-	{Hint: collection.CollectionRegisterFactHint, Instance: collection.CollectionRegisterFact{}},
-	{Hint: collection.CollectionPolicyUpdaterFactHint, Instance: collection.CollectionPolicyUpdaterFact{}},
-	{Hint: collection.MintFactHint, Instance: collection.MintFact{}},
-	{Hint: collection.NFTTransferFactHint, Instance: collection.NFTTransferFact{}},
-	{Hint: collection.DelegateFactHint, Instance: collection.DelegateFact{}},
-	{Hint: collection.ApproveFactHint, Instance: collection.ApproveFact{}},
-	{Hint: collection.NFTSignFactHint, Instance: collection.NFTSignFact{}},
 }
 
 func init() {

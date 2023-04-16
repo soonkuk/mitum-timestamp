@@ -1,10 +1,10 @@
-module github.com/ProtoconNet/mitum-nft
+module github.com/ProtoconNet/mitum-timestamp
 
 go 1.19
 
 require (
 	github.com/ProtoconNet/mitum-currency-extension/v2 v2.0.0-alpha
-	github.com/ProtoconNet/mitum-currency/v2 v2.0.0-alpha
+	github.com/ProtoconNet/mitum-currency/v2 v2.0.0-20230411085248-7b99414d9e9f
 	github.com/ProtoconNet/mitum2 v0.0.0-20230327234451-801228e1e81f
 	github.com/alecthomas/kong v0.7.1
 	github.com/arl/statsviz v0.5.1
